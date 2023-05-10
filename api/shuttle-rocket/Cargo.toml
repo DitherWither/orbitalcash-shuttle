@@ -1,0 +1,16 @@
+[package]
+name = "api"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+shuttle-runtime = "0.16.0"
+rocket = "0.5.0-rc.3"
+shuttle-rocket = "0.16.0"
+tokio = "1.27.0"
+services = { path = "../services" }
+shuttle-secrets = "0.16.0"
+shuttle-static-folder = "0.16.0"
