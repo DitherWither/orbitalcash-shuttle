@@ -5,8 +5,5 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  outDir: "../dist",
-  server: {
-    host: "3031"
-  }
+  outDir: "../api/shuttle-rocket/dist"
 });
