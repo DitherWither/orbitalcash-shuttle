@@ -1,17 +1,18 @@
-dev: copy-config
+dev: copy-all
     cargo shuttle run --port 3032 &
     npm --prefix ./frontend/ run dev -- --port 3031 &
     caddy run
     npx kill-port 3031
 
-copy-config:
+copy-all:
     cp -u Secrets.toml api/shuttle-rocket/
     cp -u Secrets.dev.toml api/shuttle-rocket/
+    cp -ur dist api/shuttle-rocket/
 
 build-frontend:
     npm --prefix ./frontend run build
 
-deploy: build-frontend copy-config
+deploy: build-frontend copy-all
     cargo shuttle deploy
 
 dev-kill-ports:
