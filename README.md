@@ -1,8 +1,8 @@
 # OrbitalCash
 
-## Dependancies
+## Dependencies
 
  - Rust toolchain
  - shuttle cli
- - cargo-make
+ - just task runner
  - caddy (for dev server)
