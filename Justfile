@@ -15,6 +15,9 @@ build-frontend:
 deploy: build-frontend copy-all
     cargo shuttle deploy
 
+create-dev-db:
+    docker run --name postgres -e POSTGRES_PASSWORD=password -d postgres
+
 dev-kill-ports:
     npx kill-port 3032
     npx kill-port 3031

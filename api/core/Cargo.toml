@@ -1,0 +1,13 @@
+[package]
+name = "core"
+version = "0.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4.24"
+secrecy = "0.8.0"
+serde = { version = "1.0.163", features = ["derive"] }
+sqlx = { version = "0.6.3", features = ["migrate", "macros", "offline", "chrono", "runtime-tokio-native-tls", "postgres"] }
+thiserror = "1.0.40"
