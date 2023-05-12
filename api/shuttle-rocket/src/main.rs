@@ -2,8 +2,8 @@ mod routes;
 
 use std::path::PathBuf;
 
-use rocket::fs::FileServer;
 use core::services::ApplicationService;
+use rocket::{fs::FileServer, Config};
 use shuttle_secrets::SecretStore;
 use sqlx::PgPool;
 
@@ -24,13 +24,23 @@ async fn rocket(
         false
     };
 
+    // Set a secret key for encrypting cookies
+    let secret_key = secret_store
+        .get("SECRET_KEY")
+        .expect("to get secret key from secret store");
+
+    let config = Config::figment().merge(("secret_key", secret_key));
+    let config = Config::from(config);
+
     let application_service = ApplicationService::new(pool)
         .await
         .expect("to create application service");
 
     let rocket = rocket::build()
         .mount("/api/users", routes::users::get_routes())
-        .manage(application_service);
+        .mount("/api/auth", routes::auth::get_routes())
+        .manage(application_service)
+        .configure(config);
 
     let rocket = if serve_static_files {
         rocket.mount("/", FileServer::from(static_folder))

@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 shuttle-runtime = "0.16.0"
-rocket = { version = "0.5.0-rc.3", features = ["json"] }
+rocket = { version = "0.5.0-rc.3", features = ["json", "secrets"] }
 shuttle-rocket = "0.16.0"
 tokio = "1.27.0"
 core = { path = "../core" }
