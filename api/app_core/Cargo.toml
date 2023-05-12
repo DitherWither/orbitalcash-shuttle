@@ -9,6 +9,7 @@ edition = "2021"
 chrono = "0.4.24"
 secrecy = "0.8.0"
 serde = { version = "1.0.163", features = ["derive"] }
-sqlx = { version = "0.6.3", features = ["migrate", "macros", "offline", "chrono", "runtime-tokio-native-tls", "postgres"] }
+sqlx = { version = "0.6.3", features = ["migrate", "macros", "offline", "chrono", "runtime-tokio-native-tls", "postgres", "decimal"] }
 thiserror = "1.0.40"
 argon2 = "0.5.0"
+rust_decimal = "1.29.1"

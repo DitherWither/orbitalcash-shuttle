@@ -10,19 +10,19 @@ CREATE TABLE users (
 CREATE TABLE tags (
     tag_id          int         PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     tagname         text        NOT NULL,
-    user_id         int         REFERENCES users(user_id) ON DELETE CASCADE,
+    user_id         int         REFERENCES users(user_id)       ON DELETE CASCADE,
     UNIQUE (tagname, user_id)
 );
 
 CREATE TABLE expenses (
     expense_id      int         PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    user_id         int         REFERENCES users(user_id) ON DELETE CASCADE,
+    user_id         int         REFERENCES users(user_id)       ON DELETE CASCADE,
     expense_time    timestamp   NOT NULL,
-    amount          int         NOT NULL
+    amount          numeric     NOT NULL
 );
 
 CREATE TABLE expenses_tags (
     expense_id     int          REFERENCES expenses(expense_id) ON DELETE CASCADE,
-    tag_id          int         REFERENCES tags(tag_id)         ON DELETE CASCADE,
+    tag_id         int          REFERENCES tags(tag_id)         ON DELETE CASCADE,
     CONSTRAINT expense_tag_pkey PRIMARY KEY (expense_id, tag_id)
 )
