@@ -7,10 +7,9 @@ use rocket::{
     http::{Cookie, CookieJar, Status},
     response::{content::RawJson, status},
     serde::json::{
-        self,
         serde_json::{self, json},
         Json,
-    },
+    }, 
     Route, State,
 };
 
@@ -82,7 +81,7 @@ pub async fn login(
 }
 
 #[post("/logout")]
-pub async fn logout(cookies: &CookieJar<'_>) -> status::Custom<RawJson<String>>{
+pub async fn logout(cookies: &CookieJar<'_>) -> status::Custom<RawJson<String>> {
     cookies.remove_private(Cookie::named("user_id"));
     status::Custom(
         Status::Ok,

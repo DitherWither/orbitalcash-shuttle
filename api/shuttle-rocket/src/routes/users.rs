@@ -1,11 +1,9 @@
-use core::{
-    services::{user_service::UserGetError, ApplicationService},
-};
+use core::services::{user_service::UserGetError, ApplicationService};
 
 use rocket::{
     http::Status,
     response::{content::RawJson, status},
-    serde::json::{serde_json},
+    serde::json::serde_json,
     Route, State,
 };
 
