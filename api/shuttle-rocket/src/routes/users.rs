@@ -1,9 +1,9 @@
-use core::services::{user_service::UserGetError, ApplicationService};
+use app_core::services::{user_service::UserGetError, ApplicationService};
 
 use rocket::{
     http::Status,
     response::{content::RawJson, status},
-    serde::json::serde_json,
+    serde::json::serde_json::{self, json},
     Route, State,
 };
 
@@ -19,7 +19,10 @@ async fn get_all(app_service: &State<ApplicationService>) -> status::Custom<RawJ
         // TODO: remove this expect
         Ok(e) => status::Custom(
             Status::Ok,
-            RawJson(serde_json::to_string(&e).expect("Failed to serialize users")),
+            RawJson(json!({
+                "status": "success",
+                "users": e
+            }).to_string()),
         ),
         Err(e) => {
             let json = serde_json::json!(
@@ -44,7 +47,10 @@ async fn get_by_id(
     match user {
         Ok(e) => status::Custom(
             Status::Ok,
-            RawJson(serde_json::to_string(&e).expect("Failed to serialize user")),
+            RawJson(json!({
+                "status": "success",
+                "user": e
+            }).to_string()),
         ),
         Err(UserGetError::DoesNotExist(id)) => status::Custom(
             Status::NotFound,

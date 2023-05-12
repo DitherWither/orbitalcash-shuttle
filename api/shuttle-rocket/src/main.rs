@@ -1,8 +1,9 @@
+mod guards;
 mod routes;
 
 use std::path::PathBuf;
 
-use core::services::ApplicationService;
+use app_core::services::ApplicationService;
 use rocket::{fs::FileServer, Config};
 use shuttle_secrets::SecretStore;
 use sqlx::PgPool;

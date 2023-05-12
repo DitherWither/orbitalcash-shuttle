@@ -116,7 +116,7 @@ checksum = "9c7d0618f0e0b7e8ff11427422b64564d5fb0be1940354bfe2e0529b18a9d9b8"
 name = "api"
 version = "0.1.0"
 dependencies = [
- "core",
+ "app_core",
  "rocket",
  "shuttle-rocket",
  "shuttle-runtime",
@@ -125,6 +125,18 @@ dependencies = [
  "shuttle-static-folder",
  "sqlx",
  "tokio",
+]
+
+[[package]]
+name = "app_core"
+version = "0.0.0"
+dependencies = [
+ "argon2",
+ "chrono",
+ "secrecy",
+ "serde",
+ "sqlx",
+ "thiserror",
 ]
 
 [[package]]
@@ -429,18 +441,6 @@ dependencies = [
  "subtle",
  "time 0.3.21",
  "version_check",
-]
-
-[[package]]
-name = "core"
-version = "0.0.0"
-dependencies = [
- "argon2",
- "chrono",
- "secrecy",
- "serde",
- "sqlx",
- "thiserror",
 ]
 
 [[package]]

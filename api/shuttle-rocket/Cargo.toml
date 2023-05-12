@@ -11,7 +11,7 @@ shuttle-runtime = "0.16.0"
 rocket = { version = "0.5.0-rc.3", features = ["json", "secrets"] }
 shuttle-rocket = "0.16.0"
 tokio = "1.27.0"
-core = { path = "../core" }
+app_core = { path = "../app_core" }
 shuttle-secrets = "0.16.0"
 shuttle-static-folder = "0.16.0"
 sqlx = { version = "0.6.3", features = ["runtime-tokio-native-tls", "offline"] }
