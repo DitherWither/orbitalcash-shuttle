@@ -1,5 +1,51 @@
 {
   "db": "PostgreSQL",
+  "4fb75e65e37af956f32069fb935c2fcc69a8812fd057ad9527758d09818f0729": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Int4"
+        },
+        {
+          "name": "email",
+          "ordinal": 1,
+          "type_info": "Text"
+        },
+        {
+          "name": "password",
+          "ordinal": 2,
+          "type_info": "Text"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT user_id, email, password FROM users WHERE email = $1"
+  },
+  "92089cd68e8126c122a8ffcf216f3f561a2c858bfe79149e62588b87683f7473": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Text",
+          "Text"
+        ]
+      }
+    },
+    "query": "INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3)"
+  },
   "c3969a73e0449121c69bc5f68daa7964cd8a83d15a2b1b5f7d60037d2345cd99": {
     "describe": {
       "columns": [
@@ -43,6 +89,26 @@
       }
     },
     "query": "SELECT user_id, display_name, email, password, creation_time FROM users WHERE user_id = $1"
+  },
+  "efa7b0d2eed28ce72deb9ab8024f835214692fae36101518a790ebf9f0d4e2f5": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT user_id FROM users WHERE email = $1"
   },
   "f764620d284756aa785d8a2d3c8a09982c148677c1e24d9b9238c4713e8ddae5": {
     "describe": {
